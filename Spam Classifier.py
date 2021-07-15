@@ -7,25 +7,25 @@ Created on Thu Jul 15 13:46:18 2021
 
 #importing the dataset
 import pandas as pd
-messages = pd.read_csv('SMSSpamCollection', sep='\t', names = ["label", "message"])
+messages = pd.read_csv('SpamClassifier-master/smsspamcollection/SMSSpamCollection', sep='\t', names = ["label", "message"])
 
 #Data cleaning and preprocessing
 import re
 import nltk
 from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
+#from nltk.stem import WordNetLemmatizer
 from nltk.stem.porter import PorterStemmer
 
 ps = PorterStemmer()
-lemmatizer = WordNetLemmatizer()
+#lemmatizer = WordNetLemmatizer()
 corpus=[]
 
 for i in range (len(messages)):
     review = re.sub('[^a-zA-Z]', ' ', messages['message'][i])
     review = review.lower()
     review = review.split()
-    #review = [ps.stem(word) for word in review if not word in stopwords.words('english')]
-    review = [lemmatizer.lemmatize(word) for word in review if not word in stopwords.words('english')]
+    review = [ps.stem(word) for word in review if not word in stopwords.words('english')]
+    #review = [lemmatizer.lemmatize(word) for word in review if not word in stopwords.words('english')]
     review = ' '.join(review)
     corpus.append(review)
 
