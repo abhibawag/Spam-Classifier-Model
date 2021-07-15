@@ -7,7 +7,7 @@ Created on Thu Jul 15 13:46:18 2021
 
 #importing the dataset
 import pandas as pd
-messages = pd.read_csv('SpamClassifier-master/smsspamcollection/SMSSpamCollection', sep='\t', names = ["label", "message"])
+messages = pd.read_csv('SMSSpamCollection', sep='\t', names = ["label", "message"])
 
 #Data cleaning and preprocessing
 import re
